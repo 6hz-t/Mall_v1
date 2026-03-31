@@ -58,7 +58,7 @@ public class SwaggerConfig {
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //设置文档标题(API名称)
-                .title("苏三商城")
+                .title("商城mallv1.0接口文档")
                 //文档描述
                 .description("API-接口说明")
                 //版本号

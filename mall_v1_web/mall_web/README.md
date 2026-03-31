@@ -1,12 +1,12 @@
-# susan_mall_web
+# Mall-v1 Web
 
-苏三商城前端代码
+商城前端代码
 
 #### 项目源码
 
 |     |   后端源码  |   前端源码  |
 |---  |--- | --- |
-|  码云   |  https://gitee.com/dvsusan/susan_mall   |  https://gitee.com/dvsusan/susan_mall_web   |
+|  码云   |  https://gitee.com/dvsusan/mall_v1   |  https://gitee.com/dvsusan/mall_v1_web   |
 
 #### 开发文档
 

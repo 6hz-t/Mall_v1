@@ -1,0 +1,10 @@
+Get-Content : 找不到路径“D:\Code\Mall_v1\mall_v1_uni\susan_mall_uni-master\REA
+DME.md”，因为该路径不存在。
+所在位置 行:1 字符: 2
++ (Get-Content 'd:\Code\Mall_v1\mall_v1_uni\susan_mall_uni-master\READM ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Code\Mall_v1...aster\README. 
+   md:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetCo 
+   ntentCommand
+ 

@@ -1,16 +1,12 @@
-# 苏三商城（Susan Mall）项目文档
+# 商城（Mall-v1）项目文档
 
-<div align="left">
-    <a href="https://www.zhihu.com/people/qing-jiao-wo-da-chu-2" target="_blank"> <img src="https://img.shields.io/badge/%E7%9F%A5%E4%B9%8E-%E6%BD%9C%E5%8A%9B%E7%AD%94%E4%B8%BB-ef8b00"></a>
-    <a href="https://juejin.cn/user/465848661970824/posts" target="_blank"> <img src="https://img.shields.io/badge/%E6%8E%98%E9%87%91-%E4%BA%BA%E6%B0%94%E4%BD%9C%E8%80%85-ef8b00"></a>
-    <a href="https://blog.csdn.net/lisu061714112" target="_blank"> <img src="https://img.shields.io/badge/CSDN-%E5%8D%9A%E5%AE%A2%E4%B8%93%E5%AE%B6-ef8b00"></a>
-</div>
+
 
 ---
 
 ## 一、项目介绍
 
-**苏三商城（Susan Mall）** 是基于当前流行技术组合的前后端分离商城系统，包含 **Web 管理后台**、**移动端（UniApp）** 和 **后端服务** 三大部分。
+**商城（Mall-v1）** 是基于当前流行技术组合的前后端分离商城系统，包含 **Web 管理后台**、**移动端（UniApp）** 和 **后端服务** 三大部分。
 
 - **后端**：SpringBoot + MyBatis + SpringSecurity + JWT + Redis + Elasticsearch + RocketMQ + ShardingSphere + Nacos + MinIO 等
 - **Web 管理后台**：Vue 2 + Element UI
@@ -23,8 +19,8 @@
 ## 二、项目结构
 
 ```
-susan_mall/
-├── susan_mall-v1/                  # 后端项目
+mall-v1/
+├── mall-v1/                        # 后端项目
 │   └── susan_mall-master/
 │       ├── mall-common/            # 公共模块（工具类、常量、基础配置等）
 │       ├── mall-business/          # 业务逻辑层（核心业务服务）
@@ -32,7 +28,7 @@ susan_mall/
 │       ├── mall-job/               # 定时任务 + MQ 消费者 + WebSocket 服务端
 │       └── sql/                    # 数据库脚本
 │
-├── susan_mall_v1_web/              # Web 管理后台前端
+├── mall_v1_web/                    # Web 管理后台前端
 │   └── susan_mall_web-master/
 │       ├── src/
 │       │   ├── api/                # API 接口
@@ -44,7 +40,7 @@ susan_mall/
 │       │   └── views/              # 页面
 │       └── package.json
 │
-└── susan_mall_v1_uni/              # 移动端（UniApp）
+└── mall_v1_uni/                    # 移动端（UniApp）
     └── susan_mall_uni-master/
         ├── pages/                  # 页面
         ├── components/             # 组件
@@ -268,31 +264,9 @@ susan_mall/
 
 ---
 
-## 七、系统架构图
 
-### 7.1 系统架构图
 
-![系统架构图](susan_mall-v1/susan_mall-master/img 商城系统架构图.png)
-
-### 7.2 商城架构图
-
-![商城架构图](susan_mall-v1/susan_mall-master/img 商城架构图.jpg)
-
-### 7.3 功能页面
-
-![功能页面](susan_mall-v1/susan_mall-master/img 商城系统功能页面 1.png)
-
-### 7.4 技术选型图
-
-![技术选型](susan_mall-v1/susan_mall-master/img 苏三商城使用技术.png)
-
-### 7.5 项目亮点
-
-![项目亮点](susan_mall-v1/susan_mall-master/img 苏三商城的项目亮点.png)
-
----
-
-## 八、项目亮点
+## 七、项目亮点
 
 1. **前后端分离架构**：前端 Vue/UniApp，后端 SpringBoot，接口清晰，易于维护
 2. **微服务架构设计**：模块化设计，mall-common、mall-business、mall-mgt、mall-job 职责分明
@@ -310,13 +284,13 @@ susan_mall/
 
 ---
 
-## 九、快速开始
+## 八、快速开始
 
 ### 9.1 后端启动
 
 ```bash
 # 1. 导入 SQL 脚本到 MySQL
-# 执行 susan_mall-v1/susan_mall-master/sql/ 目录下的 SQL 脚本
+# 执行 mall-v1/susan_mall-master/sql/ 目录下的 SQL 脚本
 
 # 2. 修改配置文件
 # 修改 application.yml 中的数据库、Redis、MQ 等配置
@@ -337,7 +311,7 @@ redis-server
 mongod
 
 # 8. 启动后端项目
-# 使用 IDEA 打开 susan_mall-v1/susan_mall-master 目录
+# 使用 IDEA 打开 mall-v1/susan_mall-master 目录
 # 分别启动 mall-mgt 和 mall-job 模块的 Application 主类
 ```
 
@@ -345,7 +319,7 @@ mongod
 
 ```bash
 # 1. 进入项目目录
-cd susan_mall_v1_web/susan_mall_web-master
+cd mall_v1_web/susan_mall_web-master
 
 # 2. 安装依赖
 npm install
@@ -361,7 +335,7 @@ npm run build:prod
 
 ```bash
 # 1. 使用 HBuilderX 打开项目
-# 打开 susan_mall_v1_uni/susan_mall_uni-master 目录
+# 打开 mall_v1_uni/susan_mall_uni-master 目录
 
 # 2. 运行到浏览器或微信小程序
 # 选择运行目标，进行调试
@@ -411,30 +385,13 @@ netstat -ano | findstr :8080
 taskkill /F /PID <进程 ID>
 ```
 
----
 
-## 十二、项目地址
-
-| 项目 | 地址 |
-| :--- | :--- |
-| 后端项目 | https://gitee.com/dvsusan/susan_mall |
-| Web 管理后台 | https://gitee.com/dvsusan/susan_mall_web |
-| 移动端 | https://gitee.com/dvsusan/susan_mall_uni |
 
 ---
 
-## 十三、作者信息
+## 十二、许可证
 
-- **作者**：苏三
-- **知乎**：https://www.zhihu.com/people/qing-jiao-wo-da-chu-2
-- **掘金**：https://juejin.cn/user/465848661970824/posts
-- **CSDN**：https://blog.csdn.net/lisu061714112
-
----
-
-## 十四、许可证
-
-本项目采用 Apache-2.0 许可证，详见 [LICENSE](susan_mall-v1/susan_mall-master/LICENSE) 文件。
+本项目采用 Apache-2.0 许可证，详见 [LICENSE](mall-v1/susan_mall-master/LICENSE) 文件。
 
 ---
 

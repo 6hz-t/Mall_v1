@@ -11,7 +11,7 @@
 
     <artifactId>mall-mgt</artifactId>
     <name>mall-mgt</name>
-    <description>苏三商城后台管理系统</description>
+    <description>商城后台管理系统</description>
 
     <properties>
         <jjwt.version>0.10.6</jjwt.version>

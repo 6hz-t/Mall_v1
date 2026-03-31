@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell *)",
+      "Bash(get-content *)",
+      "Bash(set-content *)"
+    ]
+  },
+  "$version": 3
+}
