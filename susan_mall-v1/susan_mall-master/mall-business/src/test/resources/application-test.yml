@@ -1,0 +1,184 @@
+spring:
+  application:
+    name: mall-api
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    servlet:
+      load-on-startup: 1
+  #  cors:
+  #    allowed-origins: "*"
+  #    allowed-headers: "*"
+  #    allowed-methods: "*"
+  #  security:
+  #     user:
+  #       name: susan
+  #       password: 123456
+  #       roles: USER
+  data:
+    mongodb:
+      host: 117.72.88.11
+      port: 27017
+      auto-index-creation: true
+      database: susan_mall
+      username: mongodb
+      password: susan123
+  redis:
+    database: 5
+    host: 117.72.88.11
+    port: 6379
+    password:  susan123
+    timeout: 50000
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          username: root
+          password: 123456
+          url: jdbc:mysql://localhost:3306/susan_mall?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&autoReconnect=true
+          driver-class-name: com.mysql.cj.jdbc.Driver
+      druid:
+        wall:
+          multiStatementAllow: true
+          noneBaseStatementAllow: true
+  mail:
+    protocol: smtp
+    host: smtp.163.com
+    port: 25
+    username: 12lisu@163.com
+    password: 1111111111111
+    default-encoding: UTF-8
+  rabbitmq:
+    host: 117.72.88.11
+    port: 5672
+    username: admin
+    password: susan123
+  cache:
+    cache-names: dict_data
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=50,maximumSize=500,expireAfterWrite=60s
+  elasticsearch:
+    host: 117.72.88.11
+    port: 9200
+    username: elastic
+    password: susan123
+  #配置数据源
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/susan_mall_order_0?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+        password: 123456
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/susan_mall_order_1?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+        password: 123456
+    sharding:
+      tables:
+        #逻辑表名称
+        order_trade:
+          #配置在那个数据库，那个表
+          actual-data-nodes: ds${0..1}.order_trade_${0..1}
+          database-strategy:
+            standard: #这个地方不可忽略
+              sharding-column: code
+              precise-algorithm-class-name: cn.net.susan.sharding.OrderDataBasePreciseShardingAlgorithm
+          table-strategy:
+            standard:
+              shardingColumn: code
+              preciseAlgorithmClassName: cn.net.susan.sharding.OrderTablePreciseShardingAlgorithm
+        order_trade_item:
+          #配置在那个数据库，那个表
+          actual-data-nodes: ds${0..1}.order_trade_item_${0..1}
+          database-strategy:
+            standard: #这个地方不可忽略
+              sharding-column: code
+              precise-algorithm-class-name: cn.net.susan.sharding.OrderDataBasePreciseShardingAlgorithm
+          table-strategy:
+            standard:
+              shardingColumn: code
+              preciseAlgorithmClassName: cn.net.susan.sharding.OrderTablePreciseShardingAlgorithm
+        order_trade_delivery_address:
+          #配置在那个数据库，那个表
+          actual-data-nodes: ds${0..1}.order_trade_delivery_address_${0..1}
+          database-strategy:
+            standard: #这个地方不可忽略
+              sharding-column: code
+              precise-algorithm-class-name: cn.net.susan.sharding.OrderDataBasePreciseShardingAlgorithm
+          table-strategy:
+            standard:
+              shardingColumn: code
+              preciseAlgorithmClassName: cn.net.susan.sharding.OrderTablePreciseShardingAlgorithm
+    #日志显示具体的SQL
+    props:
+      sql:
+        show: true
+server:
+  port: 8011
+
+logging:
+  level:
+    cn:
+      net:
+        susan:
+          mapper: debug
+
+mall:
+  mgt:
+    geoIpFilePath: /Users/dv_susan/Downloads/geoip2
+    taobaoIpUrl: https://ip.taobao.com/outGetIpInfo?ip=%s&accessKey=alibaba-inc
+    aliPayConfig:
+      protocol: https
+      gatewayHost: openapi-sandbox.dl.alipaydev.com
+      signType: RSA2
+      appId: 9021000138607290
+      privateKey: 你的密码
+      publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjehzFgsbjUfksMRBGsYGi/ycg5/SMP8jmGMbRWbiVmDVKO8GdVI0StLZvfLi8ozUPcGrJzQL3HaXx+b88JXQPJ2ftUiBvQnoAf+qzWKqsqXo40uuy6DZc+0LAGoxup2WyFp4YcIf+XFMJBSGmQaGSqYs3Lx49/aWI1uFTzBL4YF4X7ckXm6Cl2xr5gD1Gl1twbKIyeDnAZal2Eego4pLwFkcP6jZFaAY0V3YqTfhZLAl5NK+K4BCB2iQPOiK6Qr5XMRhnUVQVeZr5T9PmYf1GyncBIWgUaZlmGNq6Yup2trQW/mEqDqzeek4N3NuoORdZ2JBAnLdqAjQyRBrQAnkbQIDAQAA
+      notifyUrl: http://susan.net.cn/notify
+    commonJobTopic: COMMON_JOB_TOPIC
+    mockSms: true
+
+oss:
+  qiniu:
+    accessKey: ER6fibU8DJWWFts7hNTycGeGAuyT0BPMkySTiflz
+    secretKey: 你的密码
+    #图片名字
+    bucketPictureName: susan-mall
+    #图片外部访问拦截
+    domainPicture: http://sczo04y6k.hn-bkt.clouddn.com/
+    #文件名字
+    bucketFileName: susan-mall
+    #文件外部访问拦截
+    domainFile: http://sczo04y6k.hn-bkt.clouddn.com/
+
+mybatis:
+  configLocation: classpath:/mybatis-config.xml
+minio:
+  endpoint: http://117.72.88.11
+  port: 9002
+  bucketName: mall-dev
+  secure: false
+  accessKey: root
+  secretKey: susan123456
+
+aliyun:
+  sms:
+    host: dysmsapi.aliyuncs.com
+    signName: Java突击队
+    accessKeyId: 你的配置
+    accessKeySecret: 你的配置
+    registerTemplateCode: SMS_471350295
+    loginTemplateCode: SMS_471510035
+
+rocketmq:
+  name-server: 117.72.88.11:9876
+  producer:
+    group: susan-mall-mgt-group
+    send-message-timeout: 3000

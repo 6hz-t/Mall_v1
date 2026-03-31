@@ -1,0 +1,40 @@
+CREATE TABLE `common_job` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `job_name` varchar(30) NOT NULL COMMENT '定时任务名称',
+  `pause_status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '暂停状态 0：未暂停 1：已暂停',
+  `bean_name` varchar(30) NOT NULL COMMENT 'bean名称',
+  `method_name` varchar(100) DEFAULT NULL COMMENT '方法名称',
+  `cron_expression` varchar(100) NOT NULL COMMENT 'cron 表达式',
+  `params` varchar(100) DEFAULT NULL COMMENT '参数',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='定时任务表';
+
+CREATE TABLE `common_job_log` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `job_id` bigint NOT NULL COMMENT '定时任务ID',
+  `job_name` varchar(30) NOT NULL COMMENT '定时任务名称',
+  `run_status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '执行状态 1：执行中 2：暂停 3：成功 4：失败',
+  `bean_name` varchar(30) NOT NULL COMMENT 'bean名称',
+  `method_name` varchar(100) DEFAULT NULL COMMENT '方法名称',
+  `cron_expression` varchar(100) NOT NULL COMMENT 'cron 表达式',
+  `params` varchar(100) DEFAULT NULL COMMENT '参数',
+  `start_time` datetime(3) NOT NULL COMMENT '开始执行时间',
+  `end_time` datetime(3) DEFAULT NULL COMMENT '执行结束时间',
+  `exception` varchar(200)  NULL COMMENT '异常信息',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='定时任务执行日志表';

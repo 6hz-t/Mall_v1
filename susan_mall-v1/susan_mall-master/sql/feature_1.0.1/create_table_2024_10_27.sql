@@ -1,0 +1,60 @@
+CREATE TABLE `refund` (
+`id` bigint NOT NULL COMMENT 'ID',
+`trade_id` bigint NOT NULL COMMENT '订单ID',
+`trade_code` varchar(30) NOT NULL COMMENT '订单编码',
+`product_id` bigint NOT NULL COMMENT '商品ID',
+`name` varchar(60) NOT NULL COMMENT '商品名称',
+`model` varchar(100) NOT NULL COMMENT '规格',
+`quantity` int(4) NOT NULL COMMENT '数量',
+`cover_url` varchar(200) DEFAULT NULL COMMENT '封面图片url',
+`total_amount` decimal(10,2) NOT NULL COMMENT '总金额',
+`refund_amount` decimal(10,2) NOT NULL COMMENT '退款金额',
+`refund_type` int(3) NOT NULL DEFAULT  10 COMMENT '退货类型 10：退货退款 20：换货',
+`audit_status` int(3) NOT NULL DEFAULT  10 COMMENT '审核状态 10：待审核 20：已同意 30：已拒绝',
+`refund_status` int(3) NOT NULL DEFAULT  10 COMMENT '退货状态 10：进行中 20：已拒绝 30：已完成 40：已取消',
+`content` varchar(100) NOT NULL COMMENT '申请原因',
+`rejected_reason` varchar(100) DEFAULT NULL COMMENT '拒绝原因',
+`create_user_id` bigint NOT NULL COMMENT '创建人ID',
+`create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+`create_time` datetime(3) NOT NULL COMMENT '创建日期',
+`update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+`update_user_name` varchar(30) DEFAULT NULL COMMENT '修改人名称',
+`update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+`is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+PRIMARY KEY (`id`)  USING BTREE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='退货单表';
+
+CREATE TABLE `refund_address` (
+`id` bigint NOT NULL COMMENT 'ID',
+`refund_id` bigint NOT NULL COMMENT '退货单ID',
+`receiver_name` varchar(30) NOT NULL COMMENT '收货人姓名',
+`receiver_phone` char(11) NOT NULL COMMENT '收货人手机号',
+`receiver_province` varchar(10) NOT NULL COMMENT '省份',
+`city` varchar(10) NOT NULL COMMENT '城市',
+`district`  varchar(10) NOT NULL COMMENT '区县',
+`detail_address`  varchar(50) NOT NULL COMMENT '详细地址',
+`post_code`  varchar(10) NOT NULL COMMENT '邮编',
+`create_user_id` bigint NOT NULL COMMENT '创建人ID',
+`create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+`create_time` datetime(3) NOT NULL COMMENT '创建日期',
+`update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+`update_user_name` varchar(30) DEFAULT NULL COMMENT '修改人名称',
+`update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+`is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+PRIMARY KEY (`id`)  USING BTREE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='退货单地址表';
+
+CREATE TABLE `refund_photo` (
+  `id` bigint NOT NULL  COMMENT 'ID',
+  `refund_id` bigint NOT NULL COMMENT '退货单ID',
+  `name` varchar(60) NOT NULL COMMENT '图片名称',
+  `url` varchar(200) NOT NULL COMMENT '图片url',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30) DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='退货单图片表';

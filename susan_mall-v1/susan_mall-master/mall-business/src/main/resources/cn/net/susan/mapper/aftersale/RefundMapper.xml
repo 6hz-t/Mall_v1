@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.susan.mapper.aftersale.RefundMapper">
+
+    <resultMap type="cn.net.susan.entity.aftersale.RefundEntity" id="RefundResult">
+        <result property="id"    column="id" />
+        <result property="tradeId"    column="trade_id" />
+        <result property="tradeCode"    column="trade_code" />
+        <result property="productId"    column="product_id" />
+        <result property="name"    column="name" />
+        <result property="model"    column="model" />
+        <result property="quantity"    column="quantity" />
+        <result property="coverUrl"    column="cover_url" />
+        <result property="totalAmount"    column="total_amount" />
+        <result property="refundAmount"    column="refund_amount" />
+        <result property="refundType"    column="refund_type" />
+        <result property="auditStatus"    column="audit_status" />
+        <result property="refundStatus"    column="refund_status" />
+        <result property="rejectedReason"    column="rejected_reason" />
+        <result property="createUserId"    column="create_user_id" />
+        <result property="createUserName"    column="create_user_name" />
+        <result property="createTime"    column="create_time" />
+        <result property="updateUserId"    column="update_user_id" />
+        <result property="updateUserName"    column="update_user_name" />
+        <result property="updateTime"    column="update_time" />
+        <result property="isDel"    column="is_del" />
+    </resultMap>
+
+
+    <sql id="paginationSql">
+        LIMIT #{pageBegin} , #{pageSize}
+    </sql>
+
+	<sql id="selectRefundColumn">
+         id,
+         trade_id,
+         trade_code,
+         product_id,
+         name,
+         model,
+         quantity,
+         cover_url,
+         total_amount,
+         refund_amount,
+         refund_type,
+         audit_status,
+         refund_status,
+         rejected_reason,
+         create_user_id,
+         create_user_name,
+         create_time,
+         update_user_id,
+         update_user_name,
+         update_time,
+         is_del
+    </sql>
+
+    <sql id="queryWhere">
+        <where>
+            <if test="idList != null and idList.size()>0">
+                AND id IN
+                <foreach collection="idList" item="id" open="(" close=")" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+            <if test="createBeginTime != null and createBeginTime !=''">
+                AND create_time >= #{createBeginTime}
+            </if>
+
+            <if test="createEndTime != null and createEndTime !=''">
+                AND create_time <![CDATA[<]]> #{createEndTime}
+            </if>
+            <if test="id != null ">
+               AND id = #{id}
+            </if>
+            <if test="tradeId != null ">
+               AND trade_id = #{tradeId}
+            </if>
+            <if test="tradeCode != null  and tradeCode != ''">
+               AND trade_code = #{tradeCode}
+            </if>
+            <if test="productId != null ">
+               AND product_id = #{productId}
+            </if>
+            <if test="name != null  and name != ''">
+               AND name = #{name}
+            </if>
+            <if test="model != null  and model != ''">
+               AND model = #{model}
+            </if>
+            <if test="quantity != null ">
+               AND quantity = #{quantity}
+            </if>
+            <if test="coverUrl != null  and coverUrl != ''">
+               AND cover_url = #{coverUrl}
+            </if>
+            <if test="totalAmount != null ">
+               AND total_amount = #{totalAmount}
+            </if>
+            <if test="refundAmount != null ">
+               AND refund_amount = #{refundAmount}
+            </if>
+            <if test="refundType != null ">
+               AND refund_type = #{refundType}
+            </if>
+            <if test="auditStatus != null ">
+               AND audit_status = #{auditStatus}
+            </if>
+            <if test="refundStatus != null ">
+               AND refund_status = #{refundStatus}
+            </if>
+            <if test="rejectedReason != null  and rejectedReason != ''">
+               AND rejected_reason = #{rejectedReason}
+            </if>
+            <if test="createUserId != null ">
+               AND create_user_id = #{createUserId}
+            </if>
+            <if test="createUserName != null  and createUserName != ''">
+               AND create_user_name = #{createUserName}
+            </if>
+            <if test="updateUserId != null ">
+               AND update_user_id = #{updateUserId}
+            </if>
+            <if test="updateUserName != null  and updateUserName != ''">
+               AND update_user_name = #{updateUserName}
+            </if>
+            <if test="isDel != null ">
+               AND is_del = #{isDel}
+            </if>
+              AND is_del = 0
+        </where>
+    </sql>
+
+    <select id="findById" parameterType="Long"
+            resultMap="RefundResult">
+        SELECT
+        <include refid="selectRefundColumn"/>
+        FROM refund
+        WHERE id = #{id}
+    </select>
+
+    <select id="searchByCondition"
+            parameterType="cn.net.susan.entity.aftersale.RefundConditionEntity"
+            resultMap="RefundResult">
+        SELECT
+        <include refid="selectRefundColumn"/>
+        FROM refund
+        <include refid="queryWhere"/>
+        <include refid="cn.net.susan.mapper.BaseMapper.paginationSql"/>
+    </select>
+
+    <select id="searchCount"
+            parameterType="cn.net.susan.entity.aftersale.RefundConditionEntity"
+            resultType="int">
+        SELECT
+        COUNT(*)
+        FROM refund
+        <include refid="queryWhere"/>
+    </select>
+
+
+    <update id="update" parameterType="cn.net.susan.entity.aftersale.RefundEntity">
+        UPDATE refund
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="tradeId != null ">
+                trade_id = #{tradeId},
+            </if>
+            <if test="tradeCode != null  and tradeCode != ''">
+                trade_code = #{tradeCode},
+            </if>
+            <if test="productId != null ">
+                product_id = #{productId},
+            </if>
+            <if test="name != null  and name != ''">
+                name = #{name},
+            </if>
+            <if test="model != null  and model != ''">
+                model = #{model},
+            </if>
+            <if test="quantity != null ">
+                quantity = #{quantity},
+            </if>
+            <if test="coverUrl != null  and coverUrl != ''">
+                cover_url = #{coverUrl},
+            </if>
+            <if test="totalAmount != null ">
+                total_amount = #{totalAmount},
+            </if>
+            <if test="refundAmount != null ">
+                refund_amount = #{refundAmount},
+            </if>
+            <if test="refundType != null ">
+                refund_type = #{refundType},
+            </if>
+            <if test="auditStatus != null ">
+                audit_status = #{auditStatus},
+            </if>
+            <if test="refundStatus != null ">
+                refund_status = #{refundStatus},
+            </if>
+            <if test="rejectedReason != null  and rejectedReason != ''">
+                rejected_reason = #{rejectedReason},
+            </if>
+            <if test="createUserId != null ">
+                create_user_id = #{createUserId},
+            </if>
+            <if test="createUserName != null  and createUserName != ''">
+                create_user_name = #{createUserName},
+            </if>
+            <if test="createTime != null ">
+                create_time = #{createTime},
+            </if>
+            <if test="updateUserId != null ">
+                update_user_id = #{updateUserId},
+            </if>
+            <if test="updateUserName != null  and updateUserName != ''">
+                update_user_name = #{updateUserName},
+            </if>
+            <if test="updateTime != null ">
+                update_time = #{updateTime},
+            </if>
+            <if test="isDel != null ">
+                is_del = #{isDel},
+            </if>
+            update_time=now(3)
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByIds">
+        UPDATE refund
+        SET is_del = 1,update_time=now(3),update_user_id=#{entity.updateUserId},update_user_name=#{entity.updateUserName}
+        WHERE id IN
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <insert id="insert" parameterType="cn.net.susan.entity.aftersale.RefundEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO refund
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+       id,
+        <if test="tradeId != null ">
+           trade_id,
+        </if>
+        <if test="tradeCode != null  and tradeCode != ''">
+           trade_code,
+        </if>
+        <if test="productId != null ">
+           product_id,
+        </if>
+        <if test="name != null  and name != ''">
+           name,
+        </if>
+        <if test="model != null  and model != ''">
+           model,
+        </if>
+        <if test="quantity != null ">
+           quantity,
+        </if>
+        <if test="coverUrl != null  and coverUrl != ''">
+           cover_url,
+        </if>
+        <if test="totalAmount != null ">
+           total_amount,
+        </if>
+        <if test="refundAmount != null ">
+           refund_amount,
+        </if>
+        <if test="refundType != null ">
+           refund_type,
+        </if>
+        <if test="auditStatus != null ">
+           audit_status,
+        </if>
+        <if test="refundStatus != null ">
+           refund_status,
+        </if>
+        <if test="rejectedReason != null  and rejectedReason != ''">
+           rejected_reason,
+        </if>
+        create_user_id,
+        create_user_name,
+        create_time,
+        <if test="updateUserId != null ">
+           update_user_id,
+        </if>
+        <if test="updateUserName != null  and updateUserName != ''">
+           update_user_name,
+        </if>
+        <if test="updateTime != null ">
+           update_time,
+        </if>
+        <if test="isDel != null ">
+           is_del,
+        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+          #{id},
+          <if test="tradeId != null ">
+             #{tradeId},
+          </if>
+          <if test="tradeCode != null  and tradeCode != ''">
+             #{tradeCode},
+          </if>
+          <if test="productId != null ">
+             #{productId},
+          </if>
+          <if test="name != null  and name != ''">
+             #{name},
+          </if>
+          <if test="model != null  and model != ''">
+             #{model},
+          </if>
+          <if test="quantity != null ">
+             #{quantity},
+          </if>
+          <if test="coverUrl != null  and coverUrl != ''">
+             #{coverUrl},
+          </if>
+          <if test="totalAmount != null ">
+             #{totalAmount},
+          </if>
+          <if test="refundAmount != null ">
+             #{refundAmount},
+          </if>
+          <if test="refundType != null ">
+             #{refundType},
+          </if>
+          <if test="auditStatus != null ">
+             #{auditStatus},
+          </if>
+          <if test="refundStatus != null ">
+             #{refundStatus},
+          </if>
+          <if test="rejectedReason != null  and rejectedReason != ''">
+             #{rejectedReason},
+          </if>
+          #{CURRENT_USER_ID},
+           #{CURRENT_USER_NAME},
+          now(3),
+           <if test="updateUserId != null ">
+             #{updateUserId},
+          </if>
+          <if test="updateUserName != null  and updateUserName != ''">
+             #{updateUserName},
+          </if>
+          <if test="updateTime != null ">
+             #{updateTime},
+          </if>
+          <if test="isDel != null ">
+             #{isDel},
+          </if>
+        </trim>
+    </insert>
+
+    <select id="findByIds" parameterType="Long"
+            resultMap="RefundResult">
+        SELECT
+          <include refid="selectRefundColumn"/>
+        FROM refund
+        WHERE id IN
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

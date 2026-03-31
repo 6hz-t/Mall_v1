@@ -1,0 +1,111 @@
+﻿spring:
+  autoconfigure:
+    exclude: org.apache.shardingsphere.shardingjdbc.spring.boot.SpringBootConfiguration
+  application:
+    name: mall-job
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          username: mallv1
+          password: 998877
+          url: jdbc:mysql://124.221.15.13:3306/mallv1?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+          driver-class-name: com.mysql.cj.jdbc.Driver
+      druid:
+        wall:
+          multiStatementAllow: true
+          noneBaseStatementAllow: true
+  data:
+    mongodb:
+      host: 117.72.88.11
+      port: 27017
+      auto-index-creation: true
+      database: susan_mall
+      username: mongodb
+      password: susan123456
+  redis:
+    database: 5
+    host: 124.221.15.13
+    port: 6379
+    password:  998877
+    timeout: 50000
+  mail:
+    protocol: smtp
+    host: smtp.163.com
+    port: 25
+    username: 12lisu@163.com
+    password: 1111111111111
+    default-encoding: UTF-8
+  freemarker:
+     cache: false
+     settings:
+        classic_compatible: true
+     suffix: .html
+     charset: UTF-8
+     template-loader-path: classpath:/templates/
+  rabbitmq:
+    host: 117.72.88.11
+    port: 5672
+    username: admin
+    password: susan123
+  amqp:
+    deserialization:
+      trust:
+        all: true
+  elasticsearch:
+    host: 117.72.88.11
+    port: 9200
+    username: elastic
+    password: susan123
+server:
+  port: 8012
+
+logging:
+  level:
+    cn:
+      net:
+        susan:
+          mapper: debug
+oss:
+  qiniu:
+    accessKey: ER6fibU8DJWWFts7hNTycGeGAuyT0BPMkySTiflz
+    secretKey: 浣犵殑瀵嗙爜
+    #鍥剧墖鍚嶅瓧
+    bucketPictureName: susan-mall
+    #鍥剧墖澶栭儴璁块棶鎷︽埅
+    domainPicture: http://sczo04y6k.hn-bkt.clouddn.com/
+    #鏂囦欢鍚嶅瓧
+    bucketFileName: susan-mall
+    #鏂囦欢澶栭儴璁块棶鎷︽埅
+    domainFile: http://sczo04y6k.hn-bkt.clouddn.com/
+mybatis:
+  configLocation: classpath:/mybatis-config.xml
+minio:
+  endpoint: http://117.72.88.11
+  port: 9002
+  bucketName: mall-dev
+  secure: false
+  accessKey: root
+  secretKey: susan123
+
+aliyun:
+  sms:
+    host: dysmsapi.aliyuncs.com
+    signName: Java突击队
+    accessKeyId: LTAI5tKFxW9V4m6ytzHhsFCk
+    accessKeySecret: 你的密码
+    registerTemplateCode: SMS_471350295
+    loginTemplateCode: SMS_471510035
+
+rocketmq:
+  name-server: 117.72.88.11:9876
+  producer:
+    group: susan-mall-mgt-group
+    send-message-timeout: 3000
+mall:
+  job:
+    commonJobTopic: COMMON_JOB_TOPIC

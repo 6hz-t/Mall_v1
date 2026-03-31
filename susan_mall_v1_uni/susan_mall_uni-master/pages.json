@@ -1,0 +1,198 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "苏三商城",
+				"backgroundTextStyle": "dark",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "用户登录",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "用户登录",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/index-product/index-product",
+			"style" : 
+			{
+				"navigationBarTitleText" : "商品列表"
+			}
+		},
+		{
+			"path" : "pages/product-detail/product-detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "商品详情"
+			}
+		},
+		{
+			"path" : "pages/shopping-cart/shopping-cart",
+			"style" : 
+			{
+				"navigationBarTitleText" : "购物车"
+			}
+		},
+		{
+			"path" : "pages/coupon/coupon-center",
+			"style" : 
+			{
+				"navigationBarTitleText" : "优惠券中心"
+			}
+		},
+		{
+			"path" : "pages/create-order/create-order",
+			"style" : 
+			{
+				"navigationBarTitleText" : "下单页面"
+			}
+		},
+		{
+			"path" : "pages/delivery-address/delivery-address",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收货地址管理"
+			}
+		},
+		{
+			"path" : "pages/pay-result/pay-result",
+			"style" : 
+			{
+				"navigationBarTitleText" : "支付结果页面"
+			}
+		},
+		{
+			"path" : "pages/order-list/order-list",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单查询页面"
+			}
+		},
+		{
+			"path" : "pages/order-detail/order-detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单详情页面"
+			}
+		},
+		{
+			"path" : "pages/user/user",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的"
+			}
+		},
+		{
+			"path" : "pages/search-product/search-product",
+			"style" : 
+			{
+				"navigationBarTitleText" : "商品搜索页面"
+			}
+		},
+		{
+			"path" : "pages/notice-list/notice-list",
+			"style" : 
+			{
+				"navigationBarTitleText" : "通知列表页面"
+			}
+		},
+		{
+			"path" : "pages/notice-detail/notice-detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "通知详情页面"
+			}
+		},
+		{
+			"path" : "pages/edit-address/edit-address",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收货地址编辑页面"
+			}
+		},
+		{
+			"path" : "pages/recommend-product/recommend-product",
+			"style" : 
+			{
+				"navigationBarTitleText" : "猜你喜欢"
+			}
+		},
+		{
+			"path" : "pages/comment/comment",
+			"style" : 
+			{
+				"navigationBarTitleText" : "评价页面"
+			}
+		},
+		{
+			"path" : "pages/refund/refund",
+			"style" : 
+			{
+				"navigationBarTitleText" : "退货页面"
+			}
+		},
+		{
+			"path" : "pages/category/category",
+			"style" : 
+			{
+				"navigationBarTitleText" : "分类页面"
+			}
+		},
+		{
+			"path" : "pages/sub-category/sub-category",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+	],
+	"tabBar": {
+	  "selectedColor": "#3a86b9",
+	  "color": "#b8b8b8",
+	  "list": [
+	    {
+	      "pagePath": "pages/index/index",
+	      "text": "首页",
+	      "iconPath": "/static/images/tabbar/homepage.png",
+	      "selectedIconPath": "/static/images/tabbar/homepage-sel.png"
+	    },
+	    {
+	      "pagePath": "pages/category/category",
+	      "text": "分类",
+	      "iconPath": "/static/images/tabbar/category.png",
+	      "selectedIconPath": "/static/images/tabbar/category-sel.png"
+	    },
+	    {
+	      "pagePath": "pages/shopping-cart/shopping-cart",
+	      "text": "购物车",
+	      "iconPath": "/static/images/tabbar/basket.png",
+	      "selectedIconPath": "/static/images/tabbar/basket-sel.png"
+	    },
+	    {
+	      "pagePath": "pages/user/user",
+	      "text": "我的",
+	      "iconPath": "/static/images/tabbar/user.png",
+	      "selectedIconPath": "/static/images/tabbar/user-sel.png"
+	    }
+	  ]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "苏三商城",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

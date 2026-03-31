@@ -1,0 +1,168 @@
+create database susan_mall_order_0;
+use susan_mall_order_0;
+
+
+CREATE TABLE `order_trade_0` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `code` varchar(30) NOT NULL COMMENT '订单编码',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `user_name` varchar(30) NOT NULL COMMENT '用户名称',
+  `order_time` datetime(3) DEFAULT NULL COMMENT '下单时间',
+  `order_status` int(3) NOT NULL COMMENT '订单状态 1:下单 2:支付 3：完成 4：取消',
+  `pay_status` int(3) NOT NULL COMMENT '支付状态 1:待支付 2:已支付 3：退款',
+  `total_amount` decimal(10,3) NOT NULL COMMENT '总金额',
+  `payment_amount` decimal(10,3) NOT NULL COMMENT '付款金额',
+  `remark` varchar(100)  NULL COMMENT '备注',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
+
+CREATE TABLE `order_trade_1` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `code` varchar(30) NOT NULL COMMENT '订单编码',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `user_name` varchar(30) NOT NULL COMMENT '用户名称',
+  `order_time` datetime(3) DEFAULT NULL COMMENT '下单时间',
+  `order_status` int(3) NOT NULL COMMENT '订单状态 1:下单 2:支付 3：完成 4：取消',
+  `pay_status` int(3) NOT NULL COMMENT '支付状态 1:待支付 2:已支付 3：退款',
+  `total_amount` decimal(10,3) NOT NULL COMMENT '总金额',
+  `payment_amount` decimal(10,3) NOT NULL COMMENT '付款金额',
+  `remark` varchar(100)  NULL COMMENT '备注',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
+
+CREATE TABLE `order_trade_item_0` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `trade_id` bigint NOT NULL COMMENT '订单ID',
+  `product_id` bigint NOT NULL COMMENT '商品ID',
+  `product_name` varchar(60) NOT NULL COMMENT '商品名称',
+  `model` varchar(100) NOT NULL COMMENT '商品规格',
+  `price` decimal(10,3) NOT NULL COMMENT '单价',
+  `quantity` int NOT NULL COMMENT '数量',
+  `amount` decimal(10,3) NOT NULL COMMENT '金额',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单明细表';
+
+CREATE TABLE `order_trade_item_1` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `trade_id` bigint NOT NULL COMMENT '订单ID',
+  `product_id` bigint NOT NULL COMMENT '商品ID',
+  `product_name` varchar(60) NOT NULL COMMENT '商品名称',
+  `model` varchar(100) NOT NULL COMMENT '商品规格',
+  `price` decimal(10,3) NOT NULL COMMENT '单价',
+  `quantity` int NOT NULL COMMENT '数量',
+  `amount` decimal(10,3) NOT NULL COMMENT '金额',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单明细表';
+
+
+
+create database susan_mall_order_1;
+use susan_mall_order_1;
+
+CREATE TABLE `order_trade_0` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `code` varchar(30) NOT NULL COMMENT '订单编码',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `user_name` varchar(30) NOT NULL COMMENT '用户名称',
+  `order_time` datetime(3) DEFAULT NULL COMMENT '下单时间',
+  `order_status` int(3) NOT NULL COMMENT '订单状态 1:下单 2:支付 3：完成 4：取消',
+  `pay_status` int(3) NOT NULL COMMENT '支付状态 1:待支付 2:已支付 3：退款',
+  `total_amount` decimal(10,3) NOT NULL COMMENT '总金额',
+  `payment_amount` decimal(10,3) NOT NULL COMMENT '付款金额',
+  `remark` varchar(100)  NULL COMMENT '备注',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
+
+CREATE TABLE `order_trade_1` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `code` varchar(30) NOT NULL COMMENT '订单编码',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `user_name` varchar(30) NOT NULL COMMENT '用户名称',
+  `order_time` datetime(3) DEFAULT NULL COMMENT '下单时间',
+  `order_status` int(3) NOT NULL COMMENT '订单状态 1:下单 2:支付 3：完成 4：取消',
+  `pay_status` int(3) NOT NULL COMMENT '支付状态 1:待支付 2:已支付 3：退款',
+  `total_amount` decimal(10,3) NOT NULL COMMENT '总金额',
+  `payment_amount` decimal(10,3) NOT NULL COMMENT '付款金额',
+  `remark` varchar(100)  NULL COMMENT '备注',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
+
+CREATE TABLE `order_trade_item_0` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `trade_id` bigint NOT NULL COMMENT '订单ID',
+  `product_id` bigint NOT NULL COMMENT '商品ID',
+  `product_name` varchar(60) NOT NULL COMMENT '商品名称',
+  `model` varchar(100) NOT NULL COMMENT '商品规格',
+  `price` decimal(10,3) NOT NULL COMMENT '单价',
+  `quantity` int NOT NULL COMMENT '数量',
+  `amount` decimal(10,3) NOT NULL COMMENT '金额',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单明细表';
+
+CREATE TABLE `order_trade_item_1` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `trade_id` bigint NOT NULL COMMENT '订单ID',
+  `product_id` bigint NOT NULL COMMENT '商品ID',
+  `product_name` varchar(60) NOT NULL COMMENT '商品名称',
+  `model` varchar(100) NOT NULL COMMENT '商品规格',
+  `price` decimal(10,3) NOT NULL COMMENT '单价',
+  `quantity` int NOT NULL COMMENT '数量',
+  `amount` decimal(10,3) NOT NULL COMMENT '金额',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
+  `create_user_name` varchar(30) NOT NULL COMMENT '创建人名称',
+  `create_time` datetime(3) DEFAULT NULL COMMENT '创建日期',
+  `update_user_id` bigint DEFAULT NULL COMMENT '修改人ID',
+  `update_user_name` varchar(30)  DEFAULT NULL COMMENT '修改人名称',
+  `update_time` datetime(3) DEFAULT NULL COMMENT '修改时间',
+  `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除 1：已删除 0：未删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='订单明细表';
